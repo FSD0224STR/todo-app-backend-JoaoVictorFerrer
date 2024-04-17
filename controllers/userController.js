@@ -19,7 +19,7 @@ const getUserById = (req, res) => {
 
 const loggerUser = (req, res) => {
     
-    return res.status(200).json({"msg": "Login succesful"})
+    return res.status(200).json({"msg": "Login succesfull"})
 
 }
 

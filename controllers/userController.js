@@ -1,29 +1,44 @@
+const User = require('../models/user.models')
 
-let users = [
-    {
-        id: 1,
-        firstname: "joao victor",
-        lastname: "Ferreira",
-        email: "joaovictorferrer@gmail.com",
-        password: ' 13245676889'
+const getUser = (req, res) => {
+    User.findOne()
+    .then(userDocs => {
+      console.log('Found this: ', userDocs)
+     return res.status(200).json(userDocs)
+    })
+    .catch(err => {
+        console.log('Error while getting the user: ', err)
+        res.status(400).json(err)
+      });
+  }
 
+
+const loggerUser = async (req, res) => {
+  console.log('esto es email', req.body.email)
+  console.log('esto es pass', req.body.password)
+  try {
+    const userLogin = await User.findOne({ email: req.body.email })
+    console.log('esto es newlogin',userLogin)
+    if (!userLogin) {
+      return res.status(404).json({ msg: "User not found" })
+     
     }
-]
-
-const getUserById = (req, res) => {
+    if (userLogin.password !== req.body.password) {
+      return res.status(403).json({ msg: "Forbidden" })
+    }
     
-    const userFound = users.find(userById => userById.id === Number(req.params.id));
-    if (userFound) return res.status(200).json(userFound)
-    return res.status(400).json({msg: 'no existe este usuario'})
-}
-
-const loggerUser = (req, res) => {
+    return res.status(200).json({ msg: "Login successful" })
     
-    return res.status(200).json({"msg": "Login succesfull"})
+  } catch (error) {
+    return res.status(500).json({ msg: "Internal Server Error" });
+    
+  }
+    
+
 
 }
 
 module.exports = {
-    getUserById,
+    getUser,
     loggerUser
 }

@@ -36,13 +36,13 @@ main().catch((err) => console.log(err));
 //importacion de routes
 const taskRouter = require("./Routes/taskRouter");
 const usersRouter = require("./Routes/usersRouter");
-const loginRouter = require("./Routes/loginRouter");
+
 
 
 //routes
 app.use("/tasks", taskRouter);
 app.use("/user", usersRouter);
-app.use("/", loginRouter);
+
 
 const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

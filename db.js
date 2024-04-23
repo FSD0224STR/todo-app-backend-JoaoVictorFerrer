@@ -103,4 +103,37 @@
   //   ...req.body,
   // };
   // tasksList = [...tasksList, newTask];
-  // res.status(201).json({ msg: "Task created", id: "123456" });
+// res.status(201).json({ msg: "Task created", id: "123456" });
+  
+
+
+
+
+
+
+
+
+
+// ///////////////alert front
+
+
+
+// console.log(removeTitle, "este es title remove");
+// swal({
+//   title: `Eliminar esta tarea: ${removeTitle.title}`,
+//   text: "Estas seguro que deseas eliminar este archivo?",
+//   icon: "warning",
+//   buttons: ["No", "Si"],
+// })
+//   .then((respuesta) => {
+//     if (respuesta) {
+//       fetch(`http://localhost:3000/tasks/${id}`, { method: "DELETE" });
+
+//       swal({
+//         text: "El archivo se ha borrado con éxito",
+//         icon: "success",
+//       });
+//     }
+//   })
+// //   await .then(renderTasks());
+// }

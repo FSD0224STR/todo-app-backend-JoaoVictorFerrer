@@ -1,5 +1,4 @@
 
-const { boolean } = require("joi");
 const mongoose = require("mongoose") //requerimos la libreria 
 const Schema = mongoose.Schema; // accedemos a los squemas de mongoose
 
@@ -15,7 +14,11 @@ const taskSchema = new Schema({
         type: Boolean,
         default : false
     },
-    dueDate: String,
+    dueDate: {
+        type: String,
+        require: true,
+    },
+    user:{type:Schema.Types.ObjectId,ref:"User"}
 
 }, { timestamps:true}) //para añadir la fechad e creacion y modificacion
 
